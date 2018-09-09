@@ -8,7 +8,7 @@ class Map extends Component {
   constructor() {
     super();
     this.state = {
-      selectedMarker: -1
+      selectedMarker: 0
     }
   }
 
@@ -23,6 +23,18 @@ class Map extends Component {
       <div className="Map" onClick={this.onClick.bind(this)}>
         <img src={backgroundMap} className="Map-background" alt="Map background" />
         {
+          this.props.data.map(
+            (_, index) => <img
+              className="Map-marker"
+              src={this.state.selectedMarker === index ? selectedMarker : marker}
+              alt={_.name}
+              key={index}
+              style={{left: _.position[0], top: _.position[1]}}
+              data-index={index}
+            />
+          )
+        }
+        {
           this.props.data[this.state.selectedMarker] ?
             <div className="Map-details">
               <dl>
@@ -34,18 +46,6 @@ class Map extends Component {
                 }
               </dl>
             </div> : ''
-        }
-        {
-          this.props.data.map(
-            (_, index) => <img
-              className="Map-marker"
-              src={this.state.selectedMarker === index ? selectedMarker : marker}
-              alt={_.name}
-              key={index}
-              style={{left: _.position[0], top: _.position[1]}}
-              data-index={index}
-            />
-          )
         }
       </div>
     );
