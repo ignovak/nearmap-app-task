@@ -1,0 +1,8 @@
+.Map {
+  height: 100%;
+  background-color: #000;
+  background-image: url(background-map.jpg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
