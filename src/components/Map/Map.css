@@ -2,13 +2,25 @@
   position: relative;
 }
 
+.Map-details {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0 10px;
+  background: #fff;
+}
+.Map-details-key {
+  width: 100px;
+  float: left;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.Map-details-value {
+  width: 220px;
+  text-transform: capitalize;
+}
+
 .Map-marker {
   position: absolute;
-  width: 23px;
-  height: 37px;
-  background: url(marker.png);
   cursor: pointer;
-}
-.Map-marker.selected {
-  background: url(marker-selected.png);
 }
