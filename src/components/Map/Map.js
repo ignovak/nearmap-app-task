@@ -3,15 +3,31 @@ import './Map.css';
 import backgroundMap from './background-map.jpg';
 
 class Map extends Component {
+  constructor() {
+    super();
+    this.state = {
+      selectedMarker: ''
+    }
+  }
+
+  onClick(e) {
+    this.setState({
+      selectedMarker: e.target.dataset.name
+    });
+  }
+
   render() {
-    console.log(this.props.data);
     return (
-      <div className="Map">
-        <img src={backgroundMap} className="Map-background" />
+      <div className="Map" onClick={this.onClick.bind(this)}>
+        <img src={backgroundMap} className="Map-background" alt="Map background" />
         {
           this.props.data.map(
-            _ => <div className="Map-marker" key={_.name} style={{left: _.position[0], top: _.position[1]}}>
-            </div>
+            _ => <div
+              className={'Map-marker' + (this.state.selectedMarker === _.name ? ' selected' : '')}
+              key={_.name}
+              style={{left: _.position[0], top: _.position[1]}}
+              data-name={_.name}
+            ></div>
           )
         }
       </div>
